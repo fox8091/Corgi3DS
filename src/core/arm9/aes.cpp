@@ -444,6 +444,11 @@ void AES::write32(uint32_t addr, uint32_t value)
             {
                 normal_ctr = 0;
                 memcpy(keys[KEYCNT & 0x3F].normal, normal_fifo, 16);
+				printf("[AES] KEY 0x%02X Normal: ", (KEYCNT & 0x3F));
+				for(int i = 0; i < 16; i++){
+					printf("%02X", keys[KEYCNT & 0x3F].normal[i]);
+				}
+				printf("\n");
             }
             return;
         case 0x10009104:
@@ -455,6 +460,11 @@ void AES::write32(uint32_t addr, uint32_t value)
             {
                 x_ctr = 0;
                 memcpy(keys[KEYCNT & 0x3F].x, x_fifo, 16);
+				printf("[AES] KEY 0x%02X X: ", (KEYCNT & 0x3F));
+				for(int i = 0; i < 16; i++){
+					printf("%02X", keys[KEYCNT & 0x3F].x[i]);
+				}
+				printf("\n");
             }
             return;
         case 0x10009108:
@@ -467,6 +477,11 @@ void AES::write32(uint32_t addr, uint32_t value)
             {
                 y_ctr = 0;
                 memcpy(keys[KEYCNT & 0x3F].y, y_fifo, 16);
+				printf("[AES] KEY 0x%02X Y: ", (KEYCNT & 0x3F));
+				for(int i = 0; i < 16; i++){
+					printf("%02X", keys[KEYCNT & 0x3F].y[i]);
+				}
+				printf("\n");
                 gen_normal_key(KEYCNT & 0x3F);
             }
             return;
